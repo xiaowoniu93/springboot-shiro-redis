@@ -28,6 +28,7 @@ public class UserController extends BaseController{
 	 */
 	@RequestMapping(value="/add", method=RequestMethod.POST)
 	public int addUser(@RequestBody D1User user) throws Exception{
+		log.info("#UserController #addUser userName="+user.getUserName());
 		return userService.addUser(user);
 	}
 
