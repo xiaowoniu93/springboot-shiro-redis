@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.xszheng.domain.D1User;
 import com.xszheng.service.UserService;
+import com.xszheng.test.InitializingBeanTest;
 
 @RestController
 @RequestMapping(value="/user")
@@ -42,6 +43,7 @@ public class UserController extends BaseController{
 	@RequestMapping(value="list/{currentPage}/{pageSize}", method=RequestMethod.GET)
 	public Object listUser(@PathVariable(name="currentPage") Integer currentPage, @PathVariable(name="pageSize") Integer pageSize) throws Exception{
 		List<D1User> list = userService.listUser(currentPage, pageSize);
+		new InitializingBeanTest();
 		return list;
 	}
 }
