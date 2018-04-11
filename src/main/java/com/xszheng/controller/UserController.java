@@ -1,17 +1,21 @@
 package com.xszheng.controller;
 
-import java.util.List;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.alibaba.fastjson.JSON;
+import com.github.pagehelper.PageInfo;
 import com.xszheng.domain.D1User;
+import com.xszheng.param.AddUserParam;
+import com.xszheng.param.ListUserParam;
 import com.xszheng.service.UserService;
-import com.xszheng.test.InitializingBeanTest;
+import com.xszheng.util.JsonUtil;
 
 @RestController
 @RequestMapping(value="/user")
@@ -28,9 +32,10 @@ public class UserController extends BaseController{
 	 * @param
 	 */
 	@RequestMapping(value="/add", method=RequestMethod.POST)
-	public int addUser(@RequestBody D1User user) throws Exception{
-		log.info("#UserController #addUser userName="+user.getUserName());
-		return userService.addUser(user);
+	public JSON addUser(@Valid @RequestBody AddUserParam param, BindingResult result) throws Exception{
+		log.info("#UserController #addUser userName="+param.getUserName());
+		int r = userService.addUser(param);
+		return JsonUtil.newJson().toJson();
 	}
 
 	/**
@@ -40,10 +45,9 @@ public class UserController extends BaseController{
 	 * @description
 	 * @param
 	 */
-	@RequestMapping(value="list/{currentPage}/{pageSize}", method=RequestMethod.GET)
-	public Object listUser(@PathVariable(name="currentPage") Integer currentPage, @PathVariable(name="pageSize") Integer pageSize) throws Exception{
-		List<D1User> list = userService.listUser(currentPage, pageSize);
-		new InitializingBeanTest();
-		return list;
+	@RequestMapping(value="list", method=RequestMethod.POST)
+	public Object listUser(@RequestBody ListUserParam param) throws Exception{
+		PageInfo<D1User> pageInfo = userService.listUser(param);
+		return JsonUtil.newJson().addData("data", pageInfo.getList()).addPageInfo(pageInfo).toJson();
 	}
 }

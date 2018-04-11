@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 public class InitializingBeanTest implements InitializingBean {
 
 	/**
-	 * 项目启动就会加载该方法
+	 * 该类如果是个bean，项目启动就会加载该方法
 	 */
 	@Override
 	public void afterPropertiesSet() throws Exception {

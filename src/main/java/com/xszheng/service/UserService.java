@@ -2,14 +2,17 @@ package com.xszheng.service;
 
 import java.util.List;
 
+import com.github.pagehelper.PageInfo;
 import com.xszheng.domain.D1User;
+import com.xszheng.param.AddUserParam;
+import com.xszheng.param.ListUserParam;
 
 public interface UserService {
 	
 	// 添加单个用户
-	int addUser(D1User user) throws Exception;
+	int addUser(AddUserParam param) throws Exception;
 	
 	// 获取用户列表(分页)
-	List<D1User> listUser(int currentPage, int pageSize) throws Exception;
+	PageInfo<D1User> listUser(ListUserParam param) throws Exception;
 
 }
