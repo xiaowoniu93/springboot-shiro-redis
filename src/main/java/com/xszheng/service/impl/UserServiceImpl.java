@@ -1,6 +1,7 @@
 package com.xszheng.service.impl;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.slf4j.Logger;
@@ -45,6 +46,7 @@ public class UserServiceImpl implements UserService {
 	public PageInfo<D1User> listUser(ListUserParam param) throws Exception {
 		System.err.println("查询数据库");
 		log.info("key=mykey:"+stringRedisTemplate.opsForValue().get("mykey"));
+		stringRedisTemplate.opsForValue().set("testKey", "testValue", 60, TimeUnit.SECONDS);
 		PageHelper.startPage(param.getCurrentPage(), param.getPageSize());
 		List<D1User> list = d1UserMapper.listUser();
 		PageInfo<D1User> pageInfo = new PageInfo<>(list);

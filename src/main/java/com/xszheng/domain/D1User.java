@@ -1,5 +1,12 @@
 package com.xszheng.domain;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Table
 public class D1User {
     /**
      *
@@ -8,6 +15,8 @@ public class D1User {
      *
      * @mbg.generated
      */
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
     /**
@@ -17,6 +26,7 @@ public class D1User {
      *
      * @mbg.generated
      */
+	@Column(name="user_name")
     private String userName;
 
     /**
@@ -26,6 +36,7 @@ public class D1User {
      *
      * @mbg.generated
      */
+	@Column(name="password")
     private String password;
 
     /**
@@ -35,6 +46,7 @@ public class D1User {
      *
      * @mbg.generated
      */
+	@Column(name="phone")
     private String phone;
 
     /**
