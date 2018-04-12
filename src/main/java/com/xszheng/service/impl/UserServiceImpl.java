@@ -20,6 +20,7 @@ import com.xszheng.mapper.D1UserMapper;
 import com.xszheng.param.AddUserParam;
 import com.xszheng.param.ListUserParam;
 import com.xszheng.service.UserService;
+import com.xszheng.util.NoGenerator;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -37,6 +38,7 @@ public class UserServiceImpl implements UserService {
 	public int addUser(AddUserParam param) throws Exception {
 		D1User user = new D1User();
 		BeanUtils.copyProperties(user, param);
+		user.setUserNo(NoGenerator.getUserNo());
 		int r = d1UserMapper.insertSelective(user);
 		return r;
 	}
@@ -51,6 +53,12 @@ public class UserServiceImpl implements UserService {
 		List<D1User> list = d1UserMapper.listUser();
 		PageInfo<D1User> pageInfo = new PageInfo<>(list);
 		return pageInfo;
+	}
+
+	@Override
+	public D1User getUserByNo(String userNo) throws Exception {
+		D1User user = d1UserMapper.getUserByNo(userNo);
+		return user;
 	}
 	
 }

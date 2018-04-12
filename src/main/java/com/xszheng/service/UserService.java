@@ -1,7 +1,5 @@
 package com.xszheng.service;
 
-import java.util.List;
-
 import com.github.pagehelper.PageInfo;
 import com.xszheng.domain.D1User;
 import com.xszheng.param.AddUserParam;
@@ -14,5 +12,14 @@ public interface UserService {
 	
 	// 获取用户列表(分页)
 	PageInfo<D1User> listUser(ListUserParam param) throws Exception;
+	
+	/**
+	 * 根据userNo 查询对象
+	 * @author xszheng
+	 * @date 2018年4月12日上午11:09:06
+	 * @description
+	 * @param
+	 */
+	D1User getUserByNo(String userNo) throws Exception;
 
 }

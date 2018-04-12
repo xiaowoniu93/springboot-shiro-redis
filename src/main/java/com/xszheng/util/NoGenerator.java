@@ -39,7 +39,31 @@ public class NoGenerator {
      */
     public static String getUserNo() {
         int hashCode = getHashCode();
-        return "CU" + String.format("%010d", hashCode);
+        return "UN" + String.format("%010d", hashCode);
+    }
+    
+    /**
+     * 生成角色编号
+     * @author xszheng
+     * @date 2018年4月12日上午10:36:45
+     * @description
+     * @param
+     */
+    public static String getRoleNo(){
+    	int hashCode = getHashCode();
+    	return "ROLE_" + String.format("%010d", hashCode);
+    }
+    
+    /**
+     * 生成资源ID
+     * @author xszheng
+     * @date 2018年4月12日上午10:36:45
+     * @description
+     * @param
+     */
+    public static String getResourceId(){
+    	int hashCode = getHashCode();
+    	return "RI" + String.format("%010d", hashCode);
     }
 
     /**
@@ -212,14 +236,14 @@ public class NoGenerator {
         return "RP" + String.format("%010d", hashCode);
     }
 
-//    public static void main(String[] args) {
-////    	System.out.println(getTansactionNumber());
-////    	System.out.println(getOrderNo());
-////    	for (int i = 0; i < 100; i++) {
-////    		System.out.println(getHashCode());
-////		}
-//        System.out.println(getInterfaceNo());
-//	}
+    public static void main(String[] args) {
+//    	System.out.println(getTansactionNumber());
+//    	System.out.println(getOrderNo());
+//    	for (int i = 0; i < 100; i++) {
+//    		System.out.println(getHashCode());
+//		}
+        System.out.println(getUserNo());
+	}
 
 //    public static void main(String[] args) throws Exception {
 //        ExecutorService service = Executors.newFixedThreadPool(100);

@@ -1,8 +1,11 @@
 package com.xszheng.controller;
 
+import java.util.Map;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
 import com.xszheng.domain.D1User;
+import com.xszheng.domain.extend.UserExtend;
 import com.xszheng.param.AddUserParam;
 import com.xszheng.param.ListUserParam;
 import com.xszheng.service.UserService;
@@ -23,6 +27,20 @@ public class UserController extends BaseController{
 	
 	@Autowired
 	private UserService userService;
+	
+	/**
+	 * 登录
+	 * @author xszheng
+	 * @date 2018年4月12日下午2:28:57
+	 * @description
+	 * @param
+	 */
+	@RequestMapping(value="login", method=RequestMethod.POST)
+	public JSON login(@RequestBody Map<String, String> params) throws Exception{
+		UserExtend eUser = (UserExtend) SecurityContextHolder.getContext();
+		log.info("#UserController #login userName:"+eUser.getUserName());
+		return JsonUtil.newJson().toJson();
+	}
 	
 	/**
 	 * 添加用户
@@ -46,8 +64,22 @@ public class UserController extends BaseController{
 	 * @param
 	 */
 	@RequestMapping(value="list", method=RequestMethod.POST)
-	public Object listUser(@RequestBody ListUserParam param) throws Exception{
+	public JSON listUser(@RequestBody ListUserParam param) throws Exception{
 		PageInfo<D1User> pageInfo = userService.listUser(param);
 		return JsonUtil.newJson().addData("data", pageInfo.getList()).addPageInfo(pageInfo).toJson();
+	}
+	
+	/**
+	 * 测试
+	 * @author xszheng
+	 * @date 2018年4月12日上午11:35:21
+	 * @description
+	 * @param
+	 */
+	@RequestMapping(value="/getByNo", method=RequestMethod.GET)
+	public JSON getUserByNo() throws Exception {
+		UserExtend ue = new UserExtend();
+		D1User user = ue.getUserByNo();
+		return JsonUtil.newJson().addData("data", user).toJson();
 	}
 }
