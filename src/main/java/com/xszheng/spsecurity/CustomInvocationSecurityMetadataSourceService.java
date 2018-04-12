@@ -53,7 +53,7 @@ public class CustomInvocationSecurityMetadataSourceService implements FilterInvo
          */
         resourceMap = new HashMap<String, Collection<ConfigAttribute>>();
   
-        for (String roleNo : roles) {
+        for(String roleNo : roles) {
             ConfigAttribute ca = new SecurityConfig(roleNo);
             //List<Map<String,Object>> query1 = sResourceVODao.findByRoleName(auth);
             List<String> urls = new ArrayList<String>();
@@ -98,8 +98,8 @@ public class CustomInvocationSecurityMetadataSourceService implements FilterInvo
         Iterator<String> ite = resourceMap.keySet().iterator();  
         while (ite.hasNext()) {  
             String resURL = ite.next();  
-             RequestMatcher requestMatcher = new AntPathRequestMatcher(resURL);  
-                if(requestMatcher.matches(filterInvocation.getHttpRequest())) {  
+            RequestMatcher requestMatcher = new AntPathRequestMatcher(resURL);  
+            if(requestMatcher.matches(filterInvocation.getHttpRequest())) {  
                 return resourceMap.get(resURL);  
             }  
         }
