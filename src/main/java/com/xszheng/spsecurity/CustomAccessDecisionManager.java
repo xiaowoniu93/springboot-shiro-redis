@@ -42,26 +42,30 @@ import org.springframework.stereotype.Service;
 @Service
 public class CustomAccessDecisionManager implements AccessDecisionManager {
 
+	// 检查用户是否够权限访问资源
+    // 参数 authentication 是从 spring 的全局缓存 SecurityContextHolder 中拿到的，里面是用户的权限信息
+    // 参数 object 是url
+    // 参数 configAttributes 是访问 URL 所需的权限
 	@Override
 	public void decide(Authentication authentication, Object object, Collection<ConfigAttribute> configAttributes) throws AccessDeniedException, InsufficientAuthenticationException {
-		if( configAttributes == null ) {  
-            return ;  
-        }  
-          
+		if(configAttributes == null) {
+            return;
+        }
+        
         Iterator<ConfigAttribute> ite = configAttributes.iterator();  
-          
-        while( ite.hasNext()){  
-            ConfigAttribute ca = ite.next();  
+        
+        while(ite.hasNext()){  
+            ConfigAttribute ca = ite.next(); 
+            // 资源(URL)所持有的角色(权限)
             String needRole = ((SecurityConfig)ca).getAttribute();  
-              
-            // ga 为用户所被赋予的权限。 needRole 为访问相应的资源应该具有的权限。</span>  
+            
+            // ga 为用户所被赋予的权限。 needRole 为访问相应的资源应该具有的权限。</span>
             for(GrantedAuthority ga : authentication.getAuthorities()){
                 if(needRole.trim().equals(ga.getAuthority().trim())){
                     return;
                 }
             }
-        }  
-          
+        }
         throw new AccessDeniedException("权限不足");
 	}
 

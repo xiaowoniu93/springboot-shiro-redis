@@ -60,5 +60,10 @@ public class UserServiceImpl implements UserService {
 		D1User user = d1UserMapper.getUserByNo(userNo);
 		return user;
 	}
+
+	@Override
+	public D1User getUserByName(String userName) throws Exception {
+		return null;
+	}
 	
 }

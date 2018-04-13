@@ -45,7 +45,7 @@ public class SecurityUser extends UserExtend implements UserDetails {
 		List<D1Role> roles = this.getRoles();
 		if(roles != null){
 			for(D1Role role : roles){
-				SimpleGrantedAuthority sgauth = new SimpleGrantedAuthority(role.getRoleName());
+				SimpleGrantedAuthority sgauth = new SimpleGrantedAuthority(role.getRoleNo());
 				authorities.add(sgauth);
 			}
 		}

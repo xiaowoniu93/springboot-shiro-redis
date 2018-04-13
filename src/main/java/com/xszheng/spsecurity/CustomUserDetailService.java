@@ -16,16 +16,16 @@ public class CustomUserDetailService implements UserDetailsService {
 	private UserService userService;
 	
 	@Override
-	public UserDetails loadUserByUsername(String userNo) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
 		SecurityUser sUser = null;
 		D1User user = null;
 		try {
-			user = userService.getUserByNo(userNo);
+			user = userService.getUserByName(userName);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 		if(null == user){
-			throw new UsernameNotFoundException("userNo:"+userNo+" 不存在！");
+			throw new UsernameNotFoundException("userName:"+userName+" 不存在！");
 		}
 		sUser = new SecurityUser(user);
 		return sUser;

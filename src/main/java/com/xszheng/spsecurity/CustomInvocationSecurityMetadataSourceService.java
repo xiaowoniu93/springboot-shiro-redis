@@ -3,9 +3,11 @@ package com.xszheng.spsecurity;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.PostConstruct;
 
@@ -40,11 +42,11 @@ public class CustomInvocationSecurityMetadataSourceService implements FilterInvo
 	@PostConstruct // 被@PostConstruct修饰的方法会在服务器加载 Servlet 的时候运行，并且只会被服务器执行一次。PostConstruct在构造函数之后执行,init()方法之前执行。
     private void loadResourceDefine() {   // 一定要加上@PostConstruct注解, 在Web服务器启动时，提取系统中的所有权限。
         List<D1Role> list = roleMapper.listAll();
-        List<String> roles = new ArrayList<String>();
+        Set<String> roles = new HashSet<String>();
         if(list != null && list.size() > 0) {
             for(D1Role sr : list){
                 String roleNo = sr.getRoleNo();
-                roles.add(roleNo);  
+                roles.add(roleNo);
             }
         }
         /* 
@@ -64,7 +66,7 @@ public class CustomInvocationSecurityMetadataSourceService implements FilterInvo
                     urls.add(value);  
                 }  
             }  
-            for (String res : urls) {  
+            for (String res : urls) {
                 String url = res;  
                 /* 
                  * 判断资源文件和权限的对应关系，如果已经存在相关的资源url，则要通过该url为key提取出权限集合，将权限增加到权限集合中。 

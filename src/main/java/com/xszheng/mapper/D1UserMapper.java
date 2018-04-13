@@ -72,4 +72,13 @@ public interface D1UserMapper {
      * @param
      */
     D1User getUserByNo(@Param(value="userNo") String userNo);
+    
+    /**
+     * 根据userName 查询对象
+     * @author xszheng
+     * @date 2018年4月12日上午11:10:23
+     * @description
+     * @param
+     */
+    D1User getUserByName(@Param(value="userName") String userName);
 }
