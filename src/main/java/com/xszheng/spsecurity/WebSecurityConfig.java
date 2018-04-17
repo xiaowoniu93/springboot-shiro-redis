@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 
 @Configuration
@@ -33,10 +34,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/user/getByNo", "/user/login").permitAll()	// 该 matches 的URL无需鉴权
 			.anyRequest().authenticated();	// 其他URL都需鉴权
 //			.and()
-//			.formLogin().loginProcessingUrl("/user/login").permitAll()	// 指定登录地址为 /user/login
+//			.formLogin().loginPage("/user/login").permitAll()	// 指定登录地址为 /user/login
 //			.successHandler(loginSuccessHandler())	// 登录成功后使用该方法来存储用户信息
 //			.and()
 //			.logout().logoutUrl("/user/logOut").permitAll().invalidateHttpSession(true);	// 指定退出地址并销毁session
+		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	}
 	
 	@Override
