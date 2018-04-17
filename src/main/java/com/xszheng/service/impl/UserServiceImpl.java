@@ -63,7 +63,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public D1User getUserByName(String userName) throws Exception {
-		return null;
+		D1User user = d1UserMapper.getUserByName(userName);
+		return user;
 	}
 	
 }

@@ -1,6 +1,7 @@
 package com.xszheng.spsecurity;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -25,7 +26,8 @@ public class CustomUserDetailService implements UserDetailsService {
 			// TODO: handle exception
 		}
 		if(null == user){
-			throw new UsernameNotFoundException("userName:"+userName+" 不存在！");
+//			throw new UsernameNotFoundException("userName:"+userName+" 不存在！");
+			throw new BadCredentialsException("userName:"+userName+" 不存在！");
 		}
 		sUser = new SecurityUser(user);
 		return sUser;

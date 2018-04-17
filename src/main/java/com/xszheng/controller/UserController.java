@@ -5,6 +5,9 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,6 +31,9 @@ public class UserController extends BaseController{
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private AuthenticationManager authenticationManager;
+	
 	/**
 	 * 登录
 	 * @author xszheng
@@ -37,7 +43,11 @@ public class UserController extends BaseController{
 	 */
 	@RequestMapping(value="login", method=RequestMethod.POST)
 	public JSON login(@RequestBody Map<String, String> params) throws Exception{
-		UserExtend eUser = (UserExtend) SecurityContextHolder.getContext();
+		UsernamePasswordAuthenticationToken upAuthToken = new UsernamePasswordAuthenticationToken(params.get("userName"), params.get("password"));
+		Authentication authentication = authenticationManager.authenticate(upAuthToken);
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+		
+		UserExtend eUser = (UserExtend) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		log.info("#UserController #login userName:"+eUser.getUserName());
 		return JsonUtil.newJson().toJson();
 	}
@@ -78,6 +88,8 @@ public class UserController extends BaseController{
 	 */
 	@RequestMapping(value="/getByNo", method=RequestMethod.GET)
 	public JSON getUserByNo() throws Exception {
+		UserExtend eUser = (UserExtend) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		log.info("#UserController #login userName:"+eUser.getUserName());
 		UserExtend ue = new UserExtend();
 		D1User user = ue.getUserByNo();
 		return JsonUtil.newJson().addData("data", user).toJson();
