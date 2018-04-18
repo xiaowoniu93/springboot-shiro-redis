@@ -62,7 +62,7 @@ public class UserController extends BaseController{
 	@RequestMapping(value="/add", method=RequestMethod.POST)
 	public JSON addUser(@Valid @RequestBody AddUserParam param, BindingResult result) throws Exception{
 		log.info("#UserController #addUser userName="+param.getUserName());
-		int r = userService.addUser(param);
+		userService.addUser(param);
 		return JsonUtil.newJson().toJson();
 	}
 
