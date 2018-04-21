@@ -24,8 +24,12 @@ import com.xszheng.param.ListUserParam;
 import com.xszheng.service.UserService;
 import com.xszheng.util.JsonUtil;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping(value="/user")
+@Api(value="用户模块入口")
 public class UserController extends BaseController{
 	
 	@Autowired
@@ -41,7 +45,8 @@ public class UserController extends BaseController{
 	 * @description
 	 * @param
 	 */
-	@RequestMapping(value="login", method=RequestMethod.POST)
+	@ApiOperation(value="用户登录")
+	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public JSON login(@RequestBody Map<String, String> params) throws Exception{
 		UsernamePasswordAuthenticationToken upAuthToken = new UsernamePasswordAuthenticationToken(params.get("userName"), params.get("password"));
 		Authentication authentication = authenticationManager.authenticate(upAuthToken);
@@ -73,7 +78,7 @@ public class UserController extends BaseController{
 	 * @description
 	 * @param
 	 */
-	@RequestMapping(value="list", method=RequestMethod.POST)
+	@RequestMapping(value="/list", method=RequestMethod.POST)
 	public JSON listUser(@RequestBody ListUserParam param) throws Exception{
 		PageInfo<D1User> pageInfo = userService.listUser(param);
 		return JsonUtil.newJson().addData("data", pageInfo.getList()).addPageInfo(pageInfo).toJson();
