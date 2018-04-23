@@ -31,12 +31,12 @@ public class Swaggers {
         return new ApiInfoBuilder()
                 //页面标题
                 .title("Spring Boot 测试使用 Swagger2 构建RESTful API")
+                //描述
+                .description("API 描述")
                 //创建人
                 .contact(new Contact("Ricky", "http://www.bytebeats.com", "ricky_feng@163.com"))
                 //版本号
                 .version("1.0")
-                //描述
-                .description("API 描述")
                 .build();
     }
 

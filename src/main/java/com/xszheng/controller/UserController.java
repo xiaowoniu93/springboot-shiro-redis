@@ -45,7 +45,7 @@ public class UserController extends BaseController{
 	 * @description
 	 * @param
 	 */
-	@ApiOperation(value="用户登录")
+	@ApiOperation(value="用户登录", notes = "用户登录")
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public JSON login(@RequestBody Map<String, String> params) throws Exception{
 		UsernamePasswordAuthenticationToken upAuthToken = new UsernamePasswordAuthenticationToken(params.get("userName"), params.get("password"));
