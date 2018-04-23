@@ -16,6 +16,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class Swaggers {
 	
+	//swagger2的配置文件，这里可以配置swagger2的一些基本的内容，比如扫描的包等等
 	@Bean
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
