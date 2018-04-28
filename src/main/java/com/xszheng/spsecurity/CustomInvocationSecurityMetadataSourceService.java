@@ -66,8 +66,7 @@ public class CustomInvocationSecurityMetadataSourceService implements FilterInvo
                     urls.add(value);  
                 }  
             }  
-            for (String res : urls) {
-                String url = res;  
+            for (String url : urls) {
                 /* 
                  * 判断资源文件和权限的对应关系，如果已经存在相关的资源url，则要通过该url为key提取出权限集合，将权限增加到权限集合中。 
                  * sparta 
@@ -93,17 +92,17 @@ public class CustomInvocationSecurityMetadataSourceService implements FilterInvo
 	// 根据URL，查询相关权限配置
 	@Override
 	public Collection<ConfigAttribute> getAttributes(Object object) throws IllegalArgumentException {
-		FilterInvocation filterInvocation = (FilterInvocation) object;  
-        if (resourceMap == null) {  
-            loadResourceDefine();  
-        }  
-        Iterator<String> ite = resourceMap.keySet().iterator();  
-        while (ite.hasNext()) {  
-            String resURL = ite.next();  
-            RequestMatcher requestMatcher = new AntPathRequestMatcher(resURL);  
-            if(requestMatcher.matches(filterInvocation.getHttpRequest())) {  
-                return resourceMap.get(resURL);  
-            }  
+		FilterInvocation filterInvocation = (FilterInvocation) object;
+        if (resourceMap == null) {
+            loadResourceDefine();
+        }
+        Iterator<String> ite = resourceMap.keySet().iterator();
+        while (ite.hasNext()) {
+            String resURL = ite.next();
+            RequestMatcher requestMatcher = new AntPathRequestMatcher(resURL);
+            if(requestMatcher.matches(filterInvocation.getHttpRequest())) {
+                return resourceMap.get(resURL);
+            }
         }
 		return null;
 	}

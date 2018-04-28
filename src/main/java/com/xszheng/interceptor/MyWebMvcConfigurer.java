@@ -26,8 +26,8 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(new MyInterceptor1()).addPathPatterns("/**");
-		registry.addInterceptor(new MyInterceptor2()).addPathPatterns("/**");
+//		registry.addInterceptor(new MyInterceptor1()).addPathPatterns("/**");
+//		registry.addInterceptor(new MyInterceptor2()).addPathPatterns("/**");
 //		this.addInterceptors(registry);
 	}
 

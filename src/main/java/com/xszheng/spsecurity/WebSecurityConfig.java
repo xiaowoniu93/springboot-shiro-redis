@@ -31,7 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configure(HttpSecurity http) throws Exception {
 		http.addFilterBefore(securityInterceptor, FilterSecurityInterceptor.class).csrf().disable()	// 加载过滤器，关闭 csrf 认证
 			.authorizeRequests()
-			.antMatchers("/user/getByNo", "/user/login", "/user/add").permitAll()	// 该 matches 的URL无需鉴权
+			.antMatchers(/*"/user/getByNo", "/user/login", "/user/add"*/).permitAll()	// 该 matches 的URL无需鉴权
 			.anyRequest().authenticated();	// 其他URL都需鉴权
 //			.and()
 //			.formLogin().loginPage("/user/login").permitAll()	// 指定登录地址为 /user/login
