@@ -47,8 +47,8 @@ public class UserServiceImpl implements UserService {
 	@Cacheable(value=CacheNameConstant.CACHE_NAME_1, key="'user'+#param.getCurrentPage()+#param.getPageSize()")
 	public PageInfo<D1User> listUser(ListUserParam param) throws Exception {
 		System.err.println("查询数据库");
-		log.info("key=mykey:"+stringRedisTemplate.opsForValue().get("mykey"));
-		stringRedisTemplate.opsForValue().set("testKey", "testValue", 60, TimeUnit.SECONDS);
+//		log.info("key=mykey:"+stringRedisTemplate.opsForValue().get("mykey"));
+//		stringRedisTemplate.opsForValue().set("testKey", "testValue", 60, TimeUnit.SECONDS);
 		PageHelper.startPage(param.getCurrentPage(), param.getPageSize());
 		List<D1User> list = d1UserMapper.listUser();
 		PageInfo<D1User> pageInfo = new PageInfo<>(list);
