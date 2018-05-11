@@ -37,3 +37,6 @@ CREATE TABLE `d1_resource_role` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='资源角色映射表';
 -- 2018-04-12 新增 end
+-- 2018-05-11 新增 start
+alter table d1_user add column status tinyint(1) default null comment '状态：-1-锁定，1-正常';
+-- 2018-05-11 新增 end
