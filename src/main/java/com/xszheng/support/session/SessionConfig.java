@@ -1,4 +1,4 @@
-package com.xszheng.config;
+package com.xszheng.support.session;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;

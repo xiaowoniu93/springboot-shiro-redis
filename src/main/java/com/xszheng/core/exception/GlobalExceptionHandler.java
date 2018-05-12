@@ -1,4 +1,4 @@
-package com.xszheng.exception;
+package com.xszheng.core.exception;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.alibaba.fastjson.JSON;
-import com.xszheng.util.JsonUtil;
+import com.xszheng.core.utils.JsonUtil;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {

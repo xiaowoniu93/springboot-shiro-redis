@@ -1,4 +1,4 @@
-package com.xszheng.spsecurity;
+package com.xszheng.support.security;
 
 import java.util.Collection;
 import java.util.Iterator;

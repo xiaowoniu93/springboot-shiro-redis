@@ -52,7 +52,7 @@
    		<table tableName="d1_role" domainObjectName="D1Role"  enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
     	<table tableName="d1_resource" domainObjectName="D1Resource"  enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
    		-->
-    	<table tableName="d1_resource_role">
+    	<table tableName="d1_resource">
     		<generatedKey column="id" sqlStatement="Mysql" identity="true"/>
     	</table>
     </context>

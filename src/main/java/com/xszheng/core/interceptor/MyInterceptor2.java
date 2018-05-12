@@ -1,4 +1,4 @@
-package com.xszheng.interceptor;
+package com.xszheng.core.interceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

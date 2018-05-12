@@ -1,3 +1,4 @@
+package com.xszheng.support.security;
 //package com.dsdatas.cloud.config.security;
 //
 //import org.springframework.beans.factory.annotation.Autowired;

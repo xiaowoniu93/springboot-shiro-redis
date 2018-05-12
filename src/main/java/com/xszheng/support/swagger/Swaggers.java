@@ -1,4 +1,4 @@
-package com.xszheng.swagger;
+package com.xszheng.support.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

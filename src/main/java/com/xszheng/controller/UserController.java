@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
+import com.xszheng.core.utils.JsonUtil;
 import com.xszheng.domain.D1User;
 import com.xszheng.domain.extend.UserExtend;
 import com.xszheng.param.AddUserParam;
 import com.xszheng.param.ListUserParam;
 import com.xszheng.service.UserService;
-import com.xszheng.util.JsonUtil;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

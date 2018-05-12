@@ -14,13 +14,13 @@ import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.xszheng.constant.CacheNameConstant;
+import com.xszheng.core.constant.CacheNameConstant;
+import com.xszheng.core.utils.NoGenerator;
 import com.xszheng.domain.D1User;
 import com.xszheng.mapper.D1UserMapper;
 import com.xszheng.param.AddUserParam;
 import com.xszheng.param.ListUserParam;
 import com.xszheng.service.UserService;
-import com.xszheng.util.NoGenerator;
 
 @Service
 public class UserServiceImpl implements UserService {

@@ -1,4 +1,4 @@
-package com.xszheng.util;
+package com.xszheng.core.utils;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

@@ -1,4 +1,4 @@
-package com.xszheng.redis;
+package com.xszheng.support.redis;
 
 import java.util.Arrays;
 
@@ -16,7 +16,7 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.xszheng.constant.CacheNameConstant;
+import com.xszheng.core.constant.CacheNameConstant;
 
 @Configuration
 @EnableCaching

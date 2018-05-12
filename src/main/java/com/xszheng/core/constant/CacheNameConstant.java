@@ -1,4 +1,4 @@
-package com.xszheng.constant;
+package com.xszheng.core.constant;
 
 public class CacheNameConstant {
 

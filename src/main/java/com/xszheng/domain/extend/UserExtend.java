@@ -2,11 +2,11 @@ package com.xszheng.domain.extend;
 
 import java.util.List;
 
+import com.xszheng.core.utils.ApplicationContextUtil;
 import com.xszheng.domain.D1Role;
 import com.xszheng.domain.D1User;
 import com.xszheng.service.UserService;
 import com.xszheng.service.impl.UserServiceImpl;
-import com.xszheng.util.ApplicationContextUtil;
 
 public class UserExtend extends D1User {
 	

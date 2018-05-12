@@ -1,4 +1,4 @@
-package com.xszheng.spsecurity;
+package com.xszheng.support.security;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -8,12 +8,12 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.xszheng.core.utils.ApplicationContextUtil;
 import com.xszheng.domain.D1Role;
 import com.xszheng.domain.D1User;
 import com.xszheng.domain.extend.UserExtend;
 import com.xszheng.service.RoleService;
 import com.xszheng.service.impl.RoleServiceImpl;
-import com.xszheng.util.ApplicationContextUtil;
 
 public class SecurityUser extends UserExtend implements UserDetails {
 
