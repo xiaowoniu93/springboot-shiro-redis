@@ -1,7 +1,6 @@
 package com.xszheng.service.impl;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.slf4j.Logger;
@@ -15,6 +14,8 @@ import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.xszheng.core.constant.CacheNameConstant;
+import com.xszheng.core.exception.BusinessException;
+import com.xszheng.core.utils.EncryptUtils;
 import com.xszheng.core.utils.NoGenerator;
 import com.xszheng.domain.D1User;
 import com.xszheng.mapper.D1UserMapper;
@@ -36,9 +37,17 @@ public class UserServiceImpl implements UserService {
 	@Override
 	@CacheEvict(value=CacheNameConstant.CACHE_NAME_1, allEntries=true)
 	public int addUser(AddUserParam param) throws Exception {
+		// 校验用户名是否重复
+		D1User existParam = new D1User();
+		existParam.setUserName(param.getUserName());
+		List<D1User> existUser = d1UserMapper.select(existParam);
+		if(existUser != null && existUser.size() > 0){
+			throw new BusinessException("该用户名已存在");
+		}
 		D1User user = new D1User();
 		BeanUtils.copyProperties(user, param);
 		user.setUserNo(NoGenerator.getUserNo());
+		user.setPassword(EncryptUtils.getMD5Str(param.getPassword()));
 		int r = d1UserMapper.insertSelective(user);
 		return r;
 	}

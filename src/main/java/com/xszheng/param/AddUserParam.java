@@ -2,6 +2,9 @@ package com.xszheng.param;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import lombok.Data;
+
+@Data
 public class AddUserParam {
 	
 	@NotBlank(message="用户名不能为空")
@@ -13,28 +16,4 @@ public class AddUserParam {
 	@NotBlank(message="手机号不能为空")
 	private String phone;
 
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-	
 }

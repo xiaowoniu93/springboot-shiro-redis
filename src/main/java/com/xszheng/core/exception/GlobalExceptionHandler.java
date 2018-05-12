@@ -19,7 +19,11 @@ public class GlobalExceptionHandler {
 			String str = manve.getBindingResult().getFieldError().getDefaultMessage();
 			return JsonUtil.newJson().addCode(400).addMessage(str).toJson();
 		}
-		return JsonUtil.newJson().addCode(400).addMessage(e.getMessage()).toJson();
+		if(e instanceof BusinessException){
+			return JsonUtil.newJson().addCode(400).addMessage(e.getMessage()).toJson();
+		}
+		e.printStackTrace();
+		return JsonUtil.newJson().addCode(400).addMessage("系统错误").toJson();
 	}
 	
 }

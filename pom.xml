@@ -140,6 +140,13 @@
 		    <artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 		
+		<!-- @Data 注解 -->
+		<dependency>
+		    <groupId>org.projectlombok</groupId>
+		    <artifactId>lombok</artifactId>
+		    <scope>provided</scope>
+		</dependency>
+		
 		<!-- 整合swagger -->
 		<dependency>  
 		    <groupId>io.springfox</groupId>  
