@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import com.xszheng.domain.D1Role;
 import tk.mybatis.mapper.common.Mapper;
 
+@org.apache.ibatis.annotations.Mapper
 public interface D1RoleMapper extends Mapper<D1Role> {
 	/**
      * 根据用户编号查询所有角色
