@@ -9,6 +9,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -97,5 +98,19 @@ public class UserController extends BaseController{
 		UserExtend ue = new UserExtend();
 		D1User user = ue.getUserByNo();
 		return JsonUtil.newJson().addData("data", user).toJson();
+	}
+	
+	
+	/**
+	 * 测试事务【DDL 语句 mysql底层不支持事务】
+	 * @author xszheng
+	 * @date 2018年5月25日下午4:24:08
+	 * @description
+	 * @param
+	 */
+	@RequestMapping(value="/testTransactional/{id}", method=RequestMethod.POST)
+	public JSON testTransactional(@PathVariable(value="id") Long id) throws Exception{
+		userService.testTransactional(id);
+		return JsonUtil.newJson().toJson();
 	}
 }

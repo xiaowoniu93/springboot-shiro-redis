@@ -36,4 +36,13 @@ public interface D1UserMapper extends Mapper<D1User> {
      */
     D1User getUserByName(@Param(value="userName") String userName);
     
+    /**
+     * 查询sql 报异常，校验事务是否生效
+     * @author xszheng
+     * @date 2018年5月25日下午4:38:48
+     * @description
+     * @param
+     */
+    D1User getUserTest();
+    
 }

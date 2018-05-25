@@ -1,6 +1,7 @@
 package com.xszheng.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.slf4j.Logger;
@@ -10,6 +11,7 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -19,6 +21,7 @@ import com.xszheng.core.utils.EncryptUtils;
 import com.xszheng.core.utils.NoGenerator;
 import com.xszheng.domain.D1User;
 import com.xszheng.mapper.D1UserMapper;
+import com.xszheng.mapper.DynamicOperateMapper;
 import com.xszheng.param.AddUserParam;
 import com.xszheng.param.ListUserParam;
 import com.xszheng.service.UserService;
@@ -30,6 +33,9 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private D1UserMapper d1UserMapper;
+	
+	@Autowired
+	private DynamicOperateMapper dynamicOperateMapper;
 	
 	@Autowired
 	private StringRedisTemplate stringRedisTemplate;
@@ -74,6 +80,18 @@ public class UserServiceImpl implements UserService {
 	public D1User getUserByName(String userName) throws Exception {
 		D1User user = d1UserMapper.getUserByName(userName);
 		return user;
+	}
+
+	@Override
+	@Transactional
+	public void testTransactional(Long id) throws Exception {
+		D1User user = d1UserMapper.selectByPrimaryKey(id);
+		if(user == null){
+			throw new BusinessException("对象不存在");
+		}
+		d1UserMapper.deleteByPrimaryKey(id);
+		// 【DDL 语句 mysql底层不支持事务】
+//		dynamicOperateMapper.dropTable("d2_suser");
 	}
 	
 }

@@ -56,4 +56,17 @@
   		</where>
   	</select>
   	
+  	<!-- 查询sql 报异常，校验事务是否生效 -->
+  	<select id="getUserTest" resultMap="BaseResultMap">
+  		select
+  			id,
+		  	user_name,
+		  	user_no,
+		  	password,
+		  	phone,
+		from
+			d1_user
+		where
+			id = 1
+  	</select>
 </mapper>

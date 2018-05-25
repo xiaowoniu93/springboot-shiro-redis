@@ -31,4 +31,12 @@ public interface UserService {
 	 */
 	D1User getUserByName(String userName) throws Exception;
 
+	/**
+	 * 测试事务
+	 * @author xszheng
+	 * @date 2018年5月25日下午4:19:16
+	 * @description
+	 * @param
+	 */
+	void testTransactional(Long id) throws Exception;
 }
