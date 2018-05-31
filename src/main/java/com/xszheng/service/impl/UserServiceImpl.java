@@ -26,7 +26,7 @@ import com.xszheng.param.AddUserParam;
 import com.xszheng.param.ListUserParam;
 import com.xszheng.service.UserService;
 
-@Service
+@Service(value="userService")
 public class UserServiceImpl implements UserService {
 	
 	private final Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
