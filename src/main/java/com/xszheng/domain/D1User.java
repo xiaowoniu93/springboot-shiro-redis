@@ -8,7 +8,8 @@ public class D1User {
      * 主键
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator="JDBC")
     private Long id;
 
     /**
