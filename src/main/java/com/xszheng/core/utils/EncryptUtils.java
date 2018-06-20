@@ -29,6 +29,10 @@ public class EncryptUtils {
             strArr[k++] = hexDigits[byte0 >>> 4 & 0xf];  
             strArr[k++] = hexDigits[byte0 & 0xf];  
         }  
-        return new String(str);  
+        return new String(strArr);  
+	}
+	
+	public static void main(String[] args) throws Exception {
+		System.out.println(getMD5Str("123456"));
 	}
 }
